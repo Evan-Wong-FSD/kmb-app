@@ -6,10 +6,14 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "kmb-app",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -21,10 +25,40 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "softwareKeyboardLayoutMode": "pan",
+      "package": "com.project.kmbApp",
+      "config":{
+        "googleMaps":{
+          "apiKey":"AIzaSyBNPEgrogtxlBUw1EZKw4N4id0jL_TgdwI"
+        }
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "build": {
+        "babel": {
+          "include": [
+            "@ui-kitten/components"
+          ]
+        }
+      }
     }
+    // "plugins": [
+    //   [
+    //     "expo-document-picker",
+    //     {
+    //       "iCloudContainerEnvironment": "Production"
+    //     }
+    //   ],
+    //   [
+    //     "expo-build-properties",
+    //     {
+    //       "android": {
+    //         "usesCleartextTraffic": true
+    //       }
+    //     }
+    //   ]
+    // ]
   }
 }
