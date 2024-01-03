@@ -1,35 +1,16 @@
-//#region 
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.tsx to start working on your app!</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-//#endregion
-
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from './src/app/store';
-import { App } from './src/';
+import { store } from './store/Index';
 import { ApplicationProvider, IconRegistry } from '@ui-kitten/components';
 import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import * as eva from '@eva-design/eva';
 import { default as customTheme } from './custom-theme.json'
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { CardSample } from './pages/Card'
+
+const Stack = createNativeStackNavigator();
 
 const MainApp = () => (
   <SafeAreaView style={styles.main_container}>
@@ -37,7 +18,11 @@ const MainApp = () => (
     <IconRegistry icons={EvaIconsPack} />
     <ApplicationProvider {...eva} theme={{ ...eva.light, ...customTheme }}>
       <Provider store={store}>
-        <App />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name='card' component={CardSample} options={{ headerShown: false }} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </Provider>
     </ApplicationProvider>
   </SafeAreaView>
