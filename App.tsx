@@ -8,25 +8,29 @@ import * as eva from '@eva-design/eva';
 import { default as customTheme } from './custom-theme.json'
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { CardSample } from './pages/Card'
+// import { CardSample } from './pages/Card'
+import { Home } from './pages/home/Home'
+import './i18n'
 
 const Stack = createNativeStackNavigator();
 
-const MainApp = () => (
-  <SafeAreaView style={styles.main_container}>
-    <StatusBar barStyle='dark-content' />
-    <IconRegistry icons={EvaIconsPack} />
-    <ApplicationProvider {...eva} theme={{ ...eva.light, ...customTheme }}>
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name='card' component={CardSample} options={{ headerShown: false }} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
-    </ApplicationProvider>
-  </SafeAreaView>
-);
+const MainApp = () => {
+  return (
+    <SafeAreaView style={styles.main_container}>
+      <StatusBar barStyle='dark-content' />
+      <IconRegistry icons={EvaIconsPack} />
+      <ApplicationProvider {...eva} theme={{ ...eva.light, ...customTheme }}>
+        <Provider store={store}>
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen name='home' component={Home} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </Provider>
+      </ApplicationProvider>
+    </SafeAreaView>
+  )
+}
 
 const styles = StyleSheet.create({
   main_container: {

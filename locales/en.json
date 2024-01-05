@@ -1,0 +1,23 @@
+{
+  "home": {
+    "header": {
+      "drawer": {
+        "language": {
+          "label": "Languages",
+          "menu": {
+            "cancel": "cancel"
+          }
+        },
+        "termsOfUse": {
+          "label": "Terms of Use"
+        }
+      }
+    },
+    "list": {
+      "item": {
+        "to": "To",
+        "minutes": "min(s)"
+      }
+    }
+  }
+}

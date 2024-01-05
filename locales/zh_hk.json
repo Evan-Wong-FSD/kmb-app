@@ -1,0 +1,23 @@
+{
+  "home": {
+    "header": {
+      "drawer": {
+        "language": {
+          "label": "語言選擇",
+          "menu": {
+            "cancel": "取消"
+          }
+        },
+        "termsOfUse": {
+          "label": "使用條款"
+        }
+      }
+    },
+    "list": {
+      "item": {
+        "to": "往",
+        "minutes": "分鐘"
+      }
+    }
+  }
+}

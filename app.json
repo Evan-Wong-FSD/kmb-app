@@ -28,9 +28,9 @@
       },
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.project.kmbApp",
-      "config":{
-        "googleMaps":{
-          "apiKey":"AIzaSyBNPEgrogtxlBUw1EZKw4N4id0jL_TgdwI"
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBNPEgrogtxlBUw1EZKw4N4id0jL_TgdwI"
         }
       }
     },
@@ -43,22 +43,14 @@
           ]
         }
       }
-    }
-    // "plugins": [
-    //   [
-    //     "expo-document-picker",
-    //     {
-    //       "iCloudContainerEnvironment": "Production"
-    //     }
-    //   ],
-    //   [
-    //     "expo-build-properties",
-    //     {
-    //       "android": {
-    //         "usesCleartextTraffic": true
-    //       }
-    //     }
-    //   ]
-    // ]
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+        }
+      ]
+    ]
   }
 }
