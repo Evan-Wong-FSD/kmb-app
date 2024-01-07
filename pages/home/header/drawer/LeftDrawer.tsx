@@ -85,12 +85,6 @@ export const LeftDrawer = (props): React.ReactElement => {
             <Text style={styles.rightText}>{languageAbbreviation}</Text>
           </TouchableOpacity>
           <Divider style={styles.divider} />
-
-          <View style={styles.itemContainer}>
-            <Feather name="alert-triangle" size={windowWidth * 0.06} color="#5a5a5a" />
-            <Text style={[styles.label, styles.labelPosition]}>{t('home.header.drawer.termsOfUse.label')}</Text>
-          </View>
-          <Divider style={styles.divider} />
         </Animated.View>
         <Text></Text>
       </Modal>
