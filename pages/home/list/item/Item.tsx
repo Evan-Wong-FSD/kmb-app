@@ -1,12 +1,12 @@
 import { View, StyleSheet, TouchableOpacity } from "react-native"
 import { Divider, Text } from '@ui-kitten/components'
-import { Feather } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons"
 import { Stop, StopETA } from '../../../../type'
-import { useTranslation } from "react-i18next";
-import i18n from '../../../../i18n';
-import { Dimensions } from 'react-native';
+import { useTranslation } from "react-i18next"
+import i18n from '../../../../i18n'
+import { Dimensions } from 'react-native'
 
-const windowWidth = Dimensions.get('window').width;
+const windowWidth = Dimensions.get('window').width
 
 const waitingMinutes = (eta, dataTimestamp) => {
   const time = (timestamp) => new Date(timestamp).getTime()
@@ -64,11 +64,6 @@ export const Item = (props): React.ReactElement => {
               </View>
             )
         }
-        {/* <View style={{ width: '20%', alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: windowWidth * 0.06, fontWeight: 'bold', color: '#0d47a0' }}>16</Text>
-          <Text style={{ color: 'grey' }}>{t('home.list.item.minutes')}</Text>
-          <Feather name="alert-circle" size={windowWidth * 0.1} color="#0d47a0" />
-        </View> */}
       </TouchableOpacity>
       <Divider style={styles.divider} />
     </>

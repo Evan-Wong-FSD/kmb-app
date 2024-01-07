@@ -11,7 +11,7 @@ const windowWidth = Dimensions.get('window').width
 const windowHeight = Dimensions.get('window').height
 
 const languagesMenu = (openLanguagesMenu, setOpenLanguagesMenu, setOpenDrawer): React.ReactElement => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
 
   const changeLanguage = (languageCode) => {
     i18n.changeLanguage(languageCode)
@@ -40,7 +40,7 @@ const languagesMenu = (openLanguagesMenu, setOpenLanguagesMenu, setOpenDrawer): 
 }
 
 export const LeftDrawer = (props): React.ReactElement => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const slideAnim = useRef(new Animated.Value(-windowWidth)).current
   const [openLanguagesMenu, setOpenLanguagesMenu] = useState(false)
   const [languageAbbreviation, setLanguageAbbreviation] = useState<string>()
@@ -97,8 +97,8 @@ export const LeftDrawer = (props): React.ReactElement => {
 
       {languagesMenu(openLanguagesMenu, setOpenLanguagesMenu, props.setOpenDrawer)}
     </>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   backdrop: {
@@ -155,4 +155,4 @@ const styles = StyleSheet.create({
     color: 'grey',
     verticalAlign: 'middle'
   }
-});
+})

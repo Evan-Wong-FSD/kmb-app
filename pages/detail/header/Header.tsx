@@ -8,9 +8,7 @@ import { useTranslation } from "react-i18next"
 
 const windowWidth = Dimensions.get('window').width
 
-const GoBackIcon = (props): IconElement => (
-  <Icon {...props} name='arrow-back' fill="white" />
-);
+const GoBackIcon = (props): IconElement => (<Icon {...props} name='arrow-back' fill="white" />)
 
 export const Header = (props): React.ReactElement => {
   const { t } = useTranslation()
@@ -24,7 +22,7 @@ export const Header = (props): React.ReactElement => {
 
   const renderGoBackIcon = (): TouchableWebElement => (
     <TopNavigationAction icon={GoBackIcon} onPress={props.navigation.goBack} />
-  );
+  )
 
   return (
     <TopNavigation
@@ -41,4 +39,4 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.main
   },
-});
+})

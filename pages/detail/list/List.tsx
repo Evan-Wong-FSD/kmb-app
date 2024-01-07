@@ -10,13 +10,11 @@ import { changeLocation } from '../../../store/slice/Map'
 
 const windowHeight = Dimensions.get('window').height
 const menuGroupHeight = windowHeight * 0.07
-// const generateId = () => Math.random().toString(12).substring(0)
 const waitingMinutes = (eta, dataTimestamp) => {
   const time = (timestamp) => new Date(timestamp).getTime()
   return new Date(time(eta) - time(dataTimestamp)).getMinutes()
 }
 const PinIcon = (props): IconElement => (<Icon {...props} name='pin' />)
-
 const blankMenuItem = () => new Array(3).fill(null).map((elem, index) => (<MenuItem key={index} title='--分鐘' />))
 
 export const List = (props): React.ReactElement => {
@@ -38,9 +36,6 @@ export const List = (props): React.ReactElement => {
 
   const updateRouteEtaToStops = async () => {
     const routeEtaToStopsClone: RouteEtaToStop[] = JSON.parse(JSON.stringify(routeEtaToStops))
-    // for (let i = 0; i < routeEtaToStopsClone.length; i++) {
-    //   routeEtaToStopsClone[i] = await newRouteEtaToStop(routeEtaToStopsClone[i].stopId)
-    // }
     Promise.all(routeEtaToStopsClone.map(async (routeEtaToStop: RouteEtaToStop) => await newRouteEtaToStop(routeEtaToStop.stopId)))
       .then(newRouteEtaToStops => setRouteEtaToStops(newRouteEtaToStops))
       .catch(err => console.error(err))
@@ -56,8 +51,6 @@ export const List = (props): React.ReactElement => {
       if (!props.stops) return
       const stopIndex = props.stops.findIndex((stop: Stop) => stop.stop === stopEta.stopId)
       setSelectedIndex(new IndexPath(stopIndex))
-      // const newRouteEtaToStops = await Promise.all(props.stops.map(async (stop: Stop) => (await newRouteEtaToStop(stop.stop))))
-      // setRouteEtaToStops([...routeEtaToStops, ...newRouteEtaToStops])
       Promise.all(props.stops.map(async (stop: Stop) => (await newRouteEtaToStop(stop.stop))))
         .then(newRouteEtaToStops => setRouteEtaToStops([...routeEtaToStops, ...newRouteEtaToStops]))
         .catch(err => console.error(err))
@@ -112,5 +105,5 @@ export const List = (props): React.ReactElement => {
           )
       }
     </>
-  );
-};
+  )
+}

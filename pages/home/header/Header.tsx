@@ -7,16 +7,14 @@ import { LeftDrawer } from './drawer/LeftDrawer'
 
 const windowWidth = Dimensions.get('window').width
 
-const MenuIcon = (props): IconElement => (
-  <Icon {...props} name='menu-2-outline' fill="white" />
-);
+const MenuIcon = (props): IconElement => (<Icon {...props} name='menu-2-outline' fill="white" />)
 
 export const Header = (): React.ReactElement => {
   const [openDrawer, setOpenDrawer] = useState(false)
 
   const renderMenuIcon = (): TouchableWebElement => (
     <TopNavigationAction icon={MenuIcon} onPress={()=>setOpenDrawer(true)} />
-  );
+  )
 
   return (
     <>
@@ -28,11 +26,11 @@ export const Header = (): React.ReactElement => {
 
       <LeftDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} />
     </>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.main
   },
-});
+})

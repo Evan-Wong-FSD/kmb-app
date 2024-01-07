@@ -3,7 +3,6 @@ import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 import { StyleSheet, Dimensions, View, Image, Platform } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { StopETA, Location } from '../../../type'
-// import { selectStopEtas } from '../../../store/slice/StopEtas'
 import { map, changeLocation } from '../../../store/slice/Map'
 import { Spinner, Text } from '@ui-kitten/components'
 import busStop from '../../../assets/icon/busStop.png'
@@ -15,7 +14,6 @@ const windowHeight = Dimensions.get('window').height
 export const Map = (props): React.ReactElement => {
   const stopMarkerRef = useRef(null)
   const mapViewRef = useRef(null)
-  // const stopEtasState: StopETA[] = useSelector(selectStopEtas).stopEtas
   const location: Location = useSelector(map).location
   const dispatch = useDispatch(), setLocation = (coords: Location) => dispatch(changeLocation(coords))
   const stopEta: StopETA = props.route.params.stopEta

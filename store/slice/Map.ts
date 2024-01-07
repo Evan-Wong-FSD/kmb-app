@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 export const mapSlice = createSlice({
   name: "map",
   initialState: {
@@ -16,8 +16,8 @@ export const mapSlice = createSlice({
       state.location = action.payload
     },
   },
-});
+})
 
-export const map = (state) => state.map; // <---加入這行
-export const { changeLocation } = mapSlice.actions; // <-- 加上這行
-export default mapSlice.reducer;
+export const map = (state) => state.map
+export const { changeLocation } = mapSlice.actions
+export default mapSlice.reducer

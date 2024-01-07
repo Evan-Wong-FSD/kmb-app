@@ -4,13 +4,13 @@
     "slug": "kmb-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/kmbLogo.png",
     "userInterfaceStyle": "light",
     "scheme": "kmb-app",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/kmbLogo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,8 +23,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/kmbLogo.png",
+        "backgroundColor": "#000000"
       },
       "softwareKeyboardLayoutMode": "pan",
       "package": "com.project.kmbApp",
@@ -40,7 +40,7 @@
       ]
     },
     "web": {
-      "favicon": "./assets/favicon.png",
+      "favicon": "./assets/kmbLogo.png",
       "build": {
         "babel": {
           "include": [

@@ -8,7 +8,7 @@ export const axiosSlice = createSlice({
     baseURL: 'https://data.etabus.gov.hk'
   },
   reducers: {},
-});
+})
 
-export const Axios = (state) => state.axios;
-export default axiosSlice.reducer;
+export const Axios = (state) => state.axios
+export default axiosSlice.reducer
