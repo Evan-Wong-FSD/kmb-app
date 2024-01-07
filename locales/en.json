@@ -19,5 +19,12 @@
         "minutes": "min(s)"
       }
     }
+  },
+  "detail": {
+    "header": {
+      "title": {
+        "to": "To"
+      }
+    }
   }
 }

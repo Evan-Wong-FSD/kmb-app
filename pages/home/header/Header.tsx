@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Icon, IconElement, TopNavigation, TopNavigationAction, Text } from '@ui-kitten/components'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { TouchableWebElement } from '@ui-kitten/components/devsupport'
 import { theme } from '../../../theme'
-import { Dimensions } from 'react-native'
 import { LeftDrawer } from './drawer/LeftDrawer'
 
 const windowWidth = Dimensions.get('window').width
@@ -15,7 +14,7 @@ const MenuIcon = (props): IconElement => (
 export const Header = (): React.ReactElement => {
   const [openDrawer, setOpenDrawer] = useState(false)
 
-  const renderMenuAction = (): TouchableWebElement => (
+  const renderMenuIcon = (): TouchableWebElement => (
     <TopNavigationAction icon={MenuIcon} onPress={()=>setOpenDrawer(true)} />
   );
 
@@ -23,7 +22,7 @@ export const Header = (): React.ReactElement => {
     <>
       <TopNavigation
         title={evaProps => <Text {...evaProps} style={{ color: 'white', fontSize: windowWidth * 0.06, fontWeight: 'bold', paddingLeft: '5%' }}>APP 1933</Text>}
-        accessoryLeft={renderMenuAction}
+        accessoryLeft={renderMenuIcon}
         style={[styles.container, theme.shadow]}
       />
 

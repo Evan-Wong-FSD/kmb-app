@@ -32,7 +32,12 @@
         "googleMaps": {
           "apiKey": "AIzaSyBNPEgrogtxlBUw1EZKw4N4id0jL_TgdwI"
         }
-      }
+      },
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -50,7 +55,20 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "fe23a166-a5ea-4f51-a2d2-b9bbfbace4cb"
+      }
+    }
   }
 }

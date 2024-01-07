@@ -1,28 +1,32 @@
 import { VirtualizedList, StyleSheet, View } from "react-native"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux"
 import { Axios } from '../../../store/slice/Axios'
-import { useEffect, useState } from "react";
-import axios from 'axios';
-import { Stop, StopETA, UserCoordinates } from '../../../type'
+import { useCallback, useEffect, useState } from "react"
+import axios from 'axios'
+import { Stop, StopETA, Coordinates } from '../../../type'
 import { Item } from './item/Item'
-import { Spinner } from "@ui-kitten/components";
-import * as Location from 'expo-location';
+import { Spinner } from "@ui-kitten/components"
+import * as Location from 'expo-location'
 import { getDistance } from 'geolib'
+import { selectStopEtas, setStopEtas } from '../../../store/slice/StopEtas'
+import { useFocusEffect } from "@react-navigation/native"
+
+const generateId = () => Math.random().toString(12).substring(0)
 
 export const List = (props): React.ReactElement => {
   const { baseURL } = useSelector(Axios)
+  const dispatch = useDispatch(), dispatchSetStopEtas = payload => dispatch(setStopEtas(payload))
   const [stopBFA3460955AC820C, setStopBFA3460955AC820C] = useState<Stop>()
   const [stop5FB1FCAF80F3D97D, setStop5FB1FCAF80F3D97D] = useState<Stop>()
-  const [stopEtas, setStopEtas] = useState<StopETA[]>()
+  // const [stopEtas, setStopEtas] = useState<StopETA[]>()
   const itemProps = { stopBFA3460955AC820C, stop5FB1FCAF80F3D97D }
   const [refresh, setRefresh] = useState(false)
-  const [userCoordinates, setUserCoordinates] = useState<UserCoordinates>()
-
-  const generateId = () => Math.random().toString(12).substring(0)
+  const [userCoordinates, setUserCoordinates] = useState<Coordinates>()
+  const stopEtasState: StopETA[] = useSelector(selectStopEtas).stopEtas
 
   const setStop = (stopId, set) => {
     axios.get(`${baseURL}/v1/transport/kmb/stop/${stopId}`).then(res => {
-      if (res.data && 'data' in res.data) set(res.data.data)
+      if (res.data) set(res.data.data)
     })
   }
 
@@ -40,20 +44,14 @@ export const List = (props): React.ReactElement => {
       let values = []
       for (let i = 0; i < responses.length; i++) {
         const response = responses[i], stopId = stopIds[i]
-        if (response.data && 'data' in response.data) values.push(...response.data.data.map(elem => ({ id: generateId(), stopId, ...elem })))
+        if (response.data) values.push(...response.data.data.map(elem => ({ id: generateId(), stopId, ...elem })))
       }
       if (userCoordinates && stopBFA3460955AC820C && stop5FB1FCAF80F3D97D) values = ascend(values)
       set(values)
+
       setRefresh(false)
     }).catch(err => console.error(err))
   }
-
-  // useEffect(() => {
-  //   if (Array.isArray(stopEtas)) {
-  //     console.log('stopEtas[0]')
-  //     console.log(stopEtas[0])
-  //   }
-  // }, [stopEtas])
 
   const getUserCoordinates = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -65,29 +63,50 @@ export const List = (props): React.ReactElement => {
     setUserCoordinates({ latitude: location.coords.latitude, longitude: location.coords.longitude })
   }
 
-  useEffect(() => {
-    setStop('BFA3460955AC820C', setStopBFA3460955AC820C)
-    setStop('5FB1FCAF80F3D97D', setStop5FB1FCAF80F3D97D)
-    resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas)
-    const scheduleResetStopEta = setInterval(() => resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas), 1000 * 30)
-    ;(async () => await getUserCoordinates())()
-    return () => clearInterval(scheduleResetStopEta)
-  }, [])
+  useFocusEffect(
+    useCallback(() => {
+      setStop('BFA3460955AC820C', setStopBFA3460955AC820C)
+      setStop('5FB1FCAF80F3D97D', setStop5FB1FCAF80F3D97D)
+      // resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas)
+      resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], dispatchSetStopEtas)
+      // const scheduleResetStopEta = setInterval(() => resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas), 1000 * 30)
+      const scheduleResetStopEta = setInterval(() => resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], dispatchSetStopEtas), 1000 * 30)
+      ; (async () => await getUserCoordinates())()
+      return () => {
+        clearInterval(scheduleResetStopEta)
+      }
+    }, [])
+  )
+
+  // useEffect(() => {
+  //   setStop('BFA3460955AC820C', setStopBFA3460955AC820C)
+  //   setStop('5FB1FCAF80F3D97D', setStop5FB1FCAF80F3D97D)
+  //   // resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas)
+  //   resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], dispatchSetStopEtas)
+  //   // const scheduleResetStopEta = setInterval(() => resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas), 1000 * 30)
+  //   const scheduleResetStopEta = setInterval(() => resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], dispatchSetStopEtas), 1000 * 30)
+  //   ;(async () => await getUserCoordinates())()
+  //   return () => {
+  //     clearInterval(scheduleResetStopEta)
+  //   }
+  // }, [])
 
   return (
     <>
       {
-        (stopBFA3460955AC820C && stop5FB1FCAF80F3D97D && stopEtas && stopEtas.length > 0)
+        // (stopBFA3460955AC820C && stop5FB1FCAF80F3D97D && stopEtas && stopEtas.length > 0)
+        (stopBFA3460955AC820C && stop5FB1FCAF80F3D97D && stopEtasState && stopEtasState.length > 0)
           ? (
             <VirtualizedList
-              data={stopEtas.filter(elem => elem.eta_seq === 1)}
+              data={stopEtasState.filter(elem => elem.eta_seq === 1)}
               initialNumToRender={10}
               renderItem={({ item }) => <Item stopEta={item} {...itemProps} {...props} />}
               keyExtractor={(item: StopETA) => item.id}
               getItemCount={data => data.length}
               getItem={(data, index) => data[index]}
               refreshing={refresh}
-              onRefresh={() => { resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas) }}
+              // onRefresh={() => { resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], setStopEtas) }}
+              onRefresh={() => { resetStopEta(['BFA3460955AC820C', '5FB1FCAF80F3D97D'], dispatchSetStopEtas) }}
             />
           )
           : (

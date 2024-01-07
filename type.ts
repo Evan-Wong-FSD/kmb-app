@@ -26,7 +26,47 @@ export interface StopETA {
   id: string
 }
 
-export interface UserCoordinates {
+export interface Coordinates {
   latitude: number;
   longitude: number;
+}
+
+export interface RouteStop {
+  route: string;
+  bound: string;
+  service_type: string;
+  seq: string;
+  stop: string;
+}
+
+export interface RouteEtaToStop {
+  id?: string;
+  stopId: string;
+  etas: number[];
+}
+
+export interface ETA {
+  co: string;
+  data_timestamp: string;
+  dest_en: string;
+  dest_sc: string;
+  dest_tc: string;
+  dir: string;
+  eta: string;
+  eta_seq: number;
+  rmk_en: string;
+  rmk_sc: string;
+  rmk_tc: string;
+  route: string;
+  seq: number;
+  service_type: number;
+}
+
+export interface Location {
+  coords: {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+  }
 }

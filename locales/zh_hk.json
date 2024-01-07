@@ -19,5 +19,12 @@
         "minutes": "分鐘"
       }
     }
+  },
+  "detail": {
+    "header": {
+      "title": {
+        "to": "往"
+      }
+    }
   }
 }

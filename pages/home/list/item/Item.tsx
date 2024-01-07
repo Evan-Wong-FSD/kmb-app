@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native"
+import { View, StyleSheet, TouchableOpacity } from "react-native"
 import { Divider, Text } from '@ui-kitten/components'
 import { Feather } from "@expo/vector-icons";
 import { Stop, StopETA } from '../../../../type'
@@ -14,7 +14,7 @@ const waitingMinutes = (eta, dataTimestamp) => {
 }
 
 export const Item = (props): React.ReactElement => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   const stopBFA3460955AC820C: Stop = props.stopBFA3460955AC820C
   const stop5FB1FCAF80F3D97D: Stop = props.stop5FB1FCAF80F3D97D
   const stopEta: StopETA = props.stopEta
@@ -39,7 +39,7 @@ export const Item = (props): React.ReactElement => {
   return (
     <>
       <Divider style={styles.divider} />
-      <View style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={() => props.navigation.navigate('detail', { stopEta })}>
         <Text style={styles.route}>{stopEta.route}</Text>
 
         <View style={styles.destinationContainer}>
@@ -69,7 +69,7 @@ export const Item = (props): React.ReactElement => {
           <Text style={{ color: 'grey' }}>{t('home.list.item.minutes')}</Text>
           <Feather name="alert-circle" size={windowWidth * 0.1} color="#0d47a0" />
         </View> */}
-      </View>
+      </TouchableOpacity>
       <Divider style={styles.divider} />
     </>
   )
