@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Icon, IconElement, Menu, MenuGroup, MenuItem, IndexPath, Spinner } from '@ui-kitten/components'
 import { StopETA, Stop, RouteEtaToStop, ETA, Location } from '../../../type'
 import { View } from 'react-native'
-import { Dimensions } from 'react-native'
+import { Dimensions, StyleSheet } from 'react-native'
 import axios from 'axios'
 import { Axios } from '../../../store/slice/Axios'
 import { useSelector, useDispatch } from 'react-redux'
@@ -65,7 +65,7 @@ export const List = (props): React.ReactElement => {
             <Menu
               selectedIndex={selectedIndex}
               onSelect={index => { setSelectedIndex(index) }}
-              style={{ flex: 1 }}
+              style={styles.menu}
               initialScrollIndex={selectedIndex.row}
               getItemLayout={(data, index) => ({ length: menuGroupHeight, offset: menuGroupHeight * index, index })}
             >
@@ -76,7 +76,7 @@ export const List = (props): React.ReactElement => {
                     title={props.stopName(stop)}
                     accessoryLeft={PinIcon}
                     initiallyExpanded={stopEta.stopId === stop.stop}
-                    style={{ height: menuGroupHeight }}
+                    style={styles.menuGroup}
                     onPress={() => setLocation({
                       coords: {
                         latitude: Number(stop.lat),
@@ -99,7 +99,7 @@ export const List = (props): React.ReactElement => {
             </Menu>
           )
           : (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <View style={styles.spinnerContainer}>
               <Spinner size='giant' />
             </View>
           )
@@ -107,3 +107,17 @@ export const List = (props): React.ReactElement => {
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  menu: {
+    flex: 1
+  },
+  menuGroup: {
+    height: menuGroupHeight
+  },
+  spinnerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})

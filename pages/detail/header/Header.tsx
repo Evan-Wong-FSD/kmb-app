@@ -26,9 +26,11 @@ export const Header = (props): React.ReactElement => {
 
   return (
     <TopNavigation
-      title={evaProps => <Text numberOfLines={1} ellipsizeMode="tail" {...evaProps} style={{ color: 'white', fontSize: windowWidth * 0.06, fontWeight: 'bold', paddingLeft: '5%' }}>
-        {`${stopEta.route} ${t('detail.header.title.to')} ${languageOfDestination()}`}
-      </Text>}
+      title={evaProps => (
+        <Text numberOfLines={1} ellipsizeMode="tail" {...evaProps} style={styles.title}>
+          {`${stopEta.route} ${t('detail.header.title.to')} ${languageOfDestination()}`}
+        </Text>
+      )}
       accessoryLeft={renderGoBackIcon}
       style={[styles.container, theme.shadow]}
     />
@@ -39,4 +41,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.main
   },
+  title: {
+    color: 'white',
+    fontSize: windowWidth * 0.06,
+    fontWeight: 'bold',
+    paddingLeft: '5%'
+  }
 })

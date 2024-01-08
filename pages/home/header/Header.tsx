@@ -19,7 +19,7 @@ export const Header = (): React.ReactElement => {
   return (
     <>
       <TopNavigation
-        title={evaProps => <Text {...evaProps} style={{ color: 'white', fontSize: windowWidth * 0.06, fontWeight: 'bold', paddingLeft: '5%' }}>APP 1933</Text>}
+        title={evaProps => <Text {...evaProps} style={styles.title}>APP 1933</Text>}
         accessoryLeft={renderMenuIcon}
         style={[styles.container, theme.shadow]}
       />
@@ -33,4 +33,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.main
   },
+  title: {
+    color: 'white',
+    fontSize: windowWidth * 0.06,
+    fontWeight: 'bold',
+    paddingLeft: '5%'
+  }
 })

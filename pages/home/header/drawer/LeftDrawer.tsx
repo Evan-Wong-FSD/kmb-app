@@ -24,7 +24,7 @@ const languagesMenu = (openLanguagesMenu, setOpenLanguagesMenu, setOpenDrawer): 
   }, [openLanguagesMenu])
 
   return (
-    <Modal visible={openLanguagesMenu} backdropStyle={styles.backdrop} style={{ zIndex: 2 }}>
+    <Modal visible={openLanguagesMenu} backdropStyle={styles.backdrop}>
       <View style={styles.languagesMenuContainer}>
         <Text style={[styles.menuText, styles.menuTitleColor]}>語言選擇</Text>
         <Text style={styles.menuText} onPress={() => changeLanguage('en')}>English</Text>

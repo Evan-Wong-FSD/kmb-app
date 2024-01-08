@@ -9,6 +9,8 @@ import { useSelector } from 'react-redux'
 import { Axios } from '../../store/slice/Axios'
 import { useEffect, useState } from 'react'
 import i18n from '../../i18n'
+import { StyleSheet } from 'react-native'
+
 
 const stopName = (stop: Stop) => {
   if (i18n.language === 'en') return stop.name_en
@@ -44,8 +46,15 @@ export const Detail = (props): React.ReactElement => {
     <>
       <Header {...props} />
       <Map stops={stops} stopName={stopName} {...props} />
-      <Divider style={{ backgroundColor: theme.main, height: 5 }} />
+      <Divider style={styles.divider} />
       <List stops={stops} stopName={stopName} {...props} />
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  divider: {
+    backgroundColor:theme.main,
+    height: 5
+  }
+})

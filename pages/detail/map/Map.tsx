@@ -74,8 +74,8 @@ export const Map = (props): React.ReactElement => {
               }}
             >
               <Image source={stop.stop === stopEta.stopId ? selectedLocation : busStop} style={styles.markerImage} />
-              <Callout style={{ width: windowWidth * 0.5 }}>
-                <Text style={{ textAlign: 'center' }}>{props.stopName(stop)}</Text>
+              <Callout style={styles.callout}>
+                <Text style={styles.calloutText}>{props.stopName(stop)}</Text>
               </Callout>
             </Marker>
           ))
@@ -97,5 +97,11 @@ const styles = StyleSheet.create({
   markerImage: {
     height: windowWidth * 0.1,
     width: windowWidth * 0.1
+  },
+  callout: {
+    width: windowWidth * 0.5
+  },
+  calloutText: {
+    textAlign: 'center'
   }
 })

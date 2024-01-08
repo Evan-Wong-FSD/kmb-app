@@ -7,7 +7,7 @@ export const Home = (props): React.ReactElement => {
     <>
       <Header />
 
-      <View style={{ flex: 1 }}>
+      <View style={styles.view}>
         <List {...props} />
       </View>
     </>
@@ -15,5 +15,7 @@ export const Home = (props): React.ReactElement => {
 }
 
 const styles = StyleSheet.create({
-  
+  view: {
+    flex: 1
+  }
 })
