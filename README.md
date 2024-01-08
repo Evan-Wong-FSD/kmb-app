@@ -47,7 +47,7 @@ switching between different languages.
 -   It includes features: \"loading indicators\" and \"tablet view
     support.\"
 
-# Home:
+# Home component:
 
 -   Use the \"VirtualizedList\" for implementing \"Bus Listing\" for the
     following reasons:
@@ -75,7 +75,7 @@ switching between different languages.
 
 -   Automatically updates the data every 30 seconds.
 
-# Detail:
+# Detail component:
 
 -   The application is primarily composed of two components: Map and
     List.
