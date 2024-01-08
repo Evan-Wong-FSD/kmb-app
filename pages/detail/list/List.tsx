@@ -31,6 +31,7 @@ export const List = (props): React.ReactElement => {
       const elem: ETA = res.data.data[i]
       routeEtaToStop.etas[i] = waitingMinutes(elem.eta, elem.data_timestamp)
     }
+    routeEtaToStop.etas = routeEtaToStop.etas.sort((a, b) => a - b)
     return routeEtaToStop
   }
 
