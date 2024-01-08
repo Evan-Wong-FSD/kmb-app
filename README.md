@@ -15,7 +15,7 @@ switching between different languages.
 
 3.  There are three ways to open the application:
 
-    a.  In the terminal, enter \'npm star\', then open \'Expo Go\' and
+    a.  In the terminal, enter \'npm start\', then open \'Expo Go\' and
         > scan the QR Code.
 
     b.  If you have \'Android Studio\' installed, enter \`npm run
