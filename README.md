@@ -26,12 +26,12 @@ switching between different languages.
 
     d.  If you are using an Android system on your phone, you can
          download and install the APK file through the following link:
-         \"https://expo.dev/artifacts/eas/8eCQRQ9cmuXtkCZZev3s5n.apk"\
+         \"https://expo.dev/artifacts/eas/8eCQRQ9cmuXtkCZZev3s5n.apk".
 
 # Background:
 
 -   All data were found in
-    \"https://data.gov.hk/tc-data/dataset/hk-td-tis_21-etakmb"\
+    \"https://data.gov.hk/tc-data/dataset/hk-td-tis_21-etakmb".
 
 -   For simplicity, support 2 bus stops (荃景圍天橋 and 荃灣柴灣角街 )
     only.
