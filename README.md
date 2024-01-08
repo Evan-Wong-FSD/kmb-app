@@ -26,7 +26,7 @@ switching between different languages.
 
     d.  If you are using an Android system on your phone, you can
          download and install the APK file through the following link:
-         \"https://expo.dev/artifacts/eas/8eCQRQ9cmuXtkCZZev3s5n.apk".
+         \"https://expo.dev/artifacts/eas/jrmXqLyAjoH7knsomCr5AE.apk".
 
 # Background:
 
