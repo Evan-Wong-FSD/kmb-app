@@ -77,7 +77,7 @@ switching between different languages.
 
 # Detail component:
 
--   The application is primarily composed of two components: Map and
+-   This component is primarily composed of two components: Map and
     List.
 
 -   In the Map component, the react-native-maps library is used to
