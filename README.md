@@ -22,7 +22,7 @@ switching between different languages.
          android\` in the terminal to open the \'Android Emulator\'.
 
     c.  If you have \'Xcode\' installed, enter \`npm run ios\` in the
-         terminal to open the Simulator.
+         terminal to open the simulator.
 
     d.  If you are using an Android system on your phone, you can
          download and install the APK file through the following link:
