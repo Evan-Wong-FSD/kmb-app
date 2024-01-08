@@ -13,7 +13,7 @@ switching between different languages.
 
 2.  Install \'Expo Go\' on your mobile phone or iPad (optional).
 
-3.  There are three ways to open the application:
+3.  There are four ways to open the application:
 
     a.  In the terminal, enter \'npm start\', then open \'Expo Go\' and
          scan the QR Code.
